@@ -1,4 +1,4 @@
-#Homework
+# Homework
 
 During the semester, I will post homework related to the lecture's topics. Completing these exercises is great way to get exposure of the different notions you can choose to formalize in your projects.
 
