@@ -13,5 +13,3 @@ If you put your solutions to the homework online (for example on Github), I kind
 Beware of plagiarism. Copying the proofs from the internet is not tolerated. You can consult each other for hints if you are stuck but the code should not be an exact copy.
 
 There are further exercises available in the ressources of the courses. You are encouraged to try them out!
-
-#TODO: create a git repo with the exercises.
