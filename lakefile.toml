@@ -1,0 +1,10 @@
+name = "FormalizationInLean"
+version = "0.1.0"
+defaultTargets = ["formalizationinlean"]
+
+[[lean_lib]]
+name = "FormalizationInLean"
+
+[[lean_exe]]
+name = "formalizationinlean"
+root = "Main"
