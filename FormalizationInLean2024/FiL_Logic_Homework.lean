@@ -1,4 +1,3 @@
-import Mathlib.Data.Set.Defs
 import Mathlib.Data.Set.Basic
 
 /- # Homework: Logic
@@ -12,6 +11,7 @@ Some of the exercises from this sheet are taken from
 ## Exercise 1
 Show the following exercises about propositional logic.
 At least two of your solutions should be in term mode.
+You should **not** need to use classical logic.
 -/
 
 example : A ∧ (A → B) → B :=
@@ -36,6 +36,7 @@ theorem not_iff_not_self : ¬ (A ↔ ¬ A) :=
 ## Exercice 2
 Show the following exercises about first order logic.
 At least two of your solutions should be in term mode.
+You should **not** need to use classical logic.
 -/
 
 /- Show the barber paradox. -/
@@ -72,6 +73,7 @@ example : (∀ x, ¬ A x) → ¬ ∃ x, A x :=
 example : (∀ x, A x → ¬ B x) → ¬ ∃ x, A x ∧ B x :=
   sorry
 
+/- Warning : `simp` closes the goal using classical logic. -/
 example : ((¬ ∀ x, A x) → ¬ ∀ x, ¬¬ A x) ↔ ((∀ x, ¬¬ A x) → ¬¬ ∀ x, A x) :=
   sorry
 
@@ -132,7 +134,8 @@ You can assume the pub is nonempty.
 -/
 
 /-
-First, show (the first of) De Morgan's laws using mathlib's tools:
+First, show (the first of) De Morgan's laws.
+The following tactics might prove useful:
   `constructor`, `rcases`, `left`, `right`
 
 You can't use `push_neg` and classical reasoning.
