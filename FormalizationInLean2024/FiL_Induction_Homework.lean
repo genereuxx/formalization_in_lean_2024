@@ -1,7 +1,6 @@
-import Init.Data.Nat.Dvd
 import Mathlib.Data.Nat.Prime.Defs
 import Mathlib.Data.Real.Basic
-import Mathlib.tactic
+import Mathlib.Tactic
 
 open Nat
 
