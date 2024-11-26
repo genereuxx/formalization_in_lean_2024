@@ -1,3 +1,9 @@
--- This module serves as the root of the `FormalizationInLean2024` library.
--- Import modules here that should be built as part of the library.
-import «FormalizationInLean2024».Basic
+import FormalizationInLean2024.Defs.FiL_Algorithms_Defs
+import FormalizationInLean2024.Defs.FiL_Semantics_Defs
+import FormalizationInLean2024.Defs.LoVelib
+import FormalizationInLean2024.FiL_Algorithms_Demo
+import FormalizationInLean2024.FiL_Algorithms_Homework
+import FormalizationInLean2024.FiL_Induction_Homework
+import FormalizationInLean2024.FiL_Logic_Homework
+import FormalizationInLean2024.FiL_Reals_Homework
+import FormalizationInLean2024.FiL_Semantics_Homework

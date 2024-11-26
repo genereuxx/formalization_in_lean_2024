@@ -1,5 +1,5 @@
 import Mathlib.Algebra.Order.Ring.Int
-import Mathlib.Data.List.Sort
+import Init.Data.List.Sort.Basic
 import Mathlib.Data.Tree.Basic
 import Mathlib.Tactic
 
@@ -25,7 +25,7 @@ section select
 variable [LinearOrder α]
 
 abbrev List.sort :
-  List α → List α := List.mergeSort' (· ≤ ·)
+  List α → List α := List.mergeSort
 
 #eval [2,1,3,5,4].sort
 
@@ -67,15 +67,15 @@ theorem select_prop1 {xs : List α} {k : ℕ} (hk : k < xs.length) :
     (xs.filter (· < xs.select k)).length ≤ k := by
   simp_rw [← countP_eq_length_filter] at *
   wlog hsorted : Sorted (· ≤ ·) xs
-  · replace this := this (by simpa) (List.sorted_mergeSort' (· ≤ ·) xs)
-    simp_rw [select, sort, List.mergeSort'_eq_self _ (List.sorted_mergeSort' _ xs)] at this
+  · replace this := this (by simpa) (List.sorted_mergeSort' xs)
+    simp_rw [select, sort, List.mergeSort_eq_self (List.sorted_mergeSort' xs)] at this
     convert this using 1
-    rw [List.Perm.countP_eq _ (List.perm_mergeSort' _ xs), select]
+    rw [List.Perm.countP_eq _ (List.mergeSort_perm xs _), select]
   · nth_rw 3 [← List.take_append_drop k xs]
     have hzero : countP (fun x ↦ decide (x < select k xs)) (drop k xs) = 0 := by
       rw [List.countP_eq_zero]
       intro a ha
-      simp_all only [decide_eq_true_eq, not_lt, select, sort, List.mergeSort'_eq_self _ hsorted]
+      simp_all only [decide_eq_true_eq, not_lt, select, sort, List.mergeSort_eq_self hsorted]
       induction xs generalizing k
       · aesop
       · cases k <;> aesop
@@ -86,19 +86,19 @@ theorem select_prop2 {xs : List α} {k : ℕ} (hk : k < xs.length) :
     (xs.filter (xs.select k < ·)).length < xs.length - k := by
   simp_rw [← countP_eq_length_filter] at *
   wlog hsorted : Sorted (· ≤ · ) xs
-  · replace this := this (by simpa) (List.sorted_mergeSort' (· ≤ ·) xs)
+  · replace this := this (by simpa) (List.sorted_mergeSort' xs)
     simp_rw [select, sort,
-      List.mergeSort'_eq_self (· ≤ ·) (List.sorted_mergeSort' (· ≤ ·) xs)] at this
+      List.mergeSort_eq_self (List.sorted_mergeSort' xs)] at this
     convert this using 1
-    · rw [List.Perm.countP_eq _ (List.perm_mergeSort' _ xs), select]
-    rw [length_mergeSort']
+    · rw [List.Perm.countP_eq _ (List.mergeSort_perm xs _), select]
+    rw [length_mergeSort]
   · nth_rw 3 [← List.take_append_drop (k + 1) xs]
     simp only [List.countP_append]
     have hzero : countP (fun x ↦ decide (select k xs < x)) (take (k + 1) xs) = 0 := by
       rw [List.countP_eq_zero]
       intro a ha
       simp_all only [decide_eq_true_eq, not_lt, select, sort]
-      rw [List.mergeSort'_eq_self _ hsorted]
+      rw [List.mergeSort_eq_self hsorted]
       induction xs generalizing k
       · aesop
       · rcases k with - | k
