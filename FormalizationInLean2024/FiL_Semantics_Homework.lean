@@ -18,13 +18,13 @@ modified by the command: `(S,s) ⟹ t → x ∉ FiL.assigned S → s x = t x`.
 -/
 
 /-
-Exercise 7.2.
+## Exercise 7.2.
 Define a recursive function `skip : Stmt → Prop` that determines
 if a command behaves like SKIP. Prove `skip c → c ~ SKIP`.
 -/
 
 /-
-Exercise 7.3.
+## Exercise 7.3.
 Define a recursive function `deskip : Stmt → Stmt` that eliminates as many SKIPs as possible from a statement. For example:
 `deskip (Stmt.skip; Stmt.whileDo b (Stmt.assign x a; Stmt.skip)) = Stmt.whileDo b (Stmt.assign x a)`
 Prove `deskip S ~ S` by induction on `S`. The following lemma might be useful to prove in preparation:
@@ -44,8 +44,8 @@ example (S) : deskip S ~ S := by
 
 
 /-
-Exercise 7.4. Define a small-step semantics for the evaluation of arithmetic
-expressions:-/
+## Exercise 7.4.
+Define a small-step semantics for the evaluation of arithmetic expressions: -/
 
 inductive AStep : AExp × State → AExp → Prop where
 | eval (x s) : AStep (AExp.var x , s) (AExp.num (s x))
@@ -63,13 +63,15 @@ example : AStep (a, s) a' → eval s a = eval s a' := by
   sorry
 
 /-
-Exercise 7.5. Prove or disprove (by giving a counterexample):
+## Exercise 7.5.
+Prove or disprove (by giving a counterexample):
 • `If b₁ ∧ b₂ then S₁ else S₂ ~ If b₁ then (If b₂ then S₁ else S₂) else S₂`
 • `While b₁ ∧ b₁ Do S ∼ While b₁ Do While b₂ Do S`
 • `While b₂ ∨ b₂ Do S ∼ While b₁ ∨ b₂ Do S; While b₁ Do S` -/
 
 /-
-Exercise 7.6. Define a new loop construct `doWhile S B` (where `S` is
+## Exercise 7.6.
+Define a new loop construct `doWhile S B` (where `S` is
 executed once before `B` is tested) in terms of the existing constructs.
 Define a recursive translation
 `dewhile : Stmt → Stmt`
@@ -79,7 +81,8 @@ that replaces all `whileDo B S` by suitable statements that use
 -/
 
 /-
-Exercise 7.7. (Small-Step Semantics) Let `x : ℕ → Stmt` be an infinite sequence
+## Exercise 7.7.
+(Small-Step Semantics) Let `x : ℕ → Stmt` be an infinite sequence
 of statements and `y : ℕ → State` an infinite sequence of states such that
 `x 0 = S; T` and `∀ n. (x n, y n) → (x (n + 1), y (n + 1))`. Prove that
 either all `x n` are of the form `Sₙ ; T` and it is always `Sₙ` that is reduced,
