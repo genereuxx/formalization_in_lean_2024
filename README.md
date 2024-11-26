@@ -16,3 +16,5 @@ There are further exercises available in the ressources of the course. You are e
 
 # Deadline 
 The deadline for the homework is 06.12.2024 at 23:59. 
+
+To submit the homework, please do a **private** Github repository and invite me *before* the deadline.
