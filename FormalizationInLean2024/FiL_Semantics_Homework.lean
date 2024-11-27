@@ -64,10 +64,10 @@ example : AStep (a, s) a' → eval s a = eval s a' := by
 
 /-
 ## Exercise 7.5.
-Prove or disprove (by giving a counterexample):
+Prove or disprove (by formalizing a counterexample):
 • `If b₁ ∧ b₂ then S₁ else S₂ ~ If b₁ then (If b₂ then S₁ else S₂) else S₂`
-• `While b₁ ∧ b₁ Do S ∼ While b₁ Do While b₂ Do S`
-• `While b₂ ∨ b₂ Do S ∼ While b₁ ∨ b₂ Do S; While b₁ Do S` -/
+• `While b₁ ∧ b₂ Do S ∼ While b₁ Do While b₂ Do S`
+• `While b₁ ∨ b₂ Do S ∼ While b₁ ∨ b₂ Do S; While b₁ Do S` -/
 
 /-
 ## Exercise 7.6.
